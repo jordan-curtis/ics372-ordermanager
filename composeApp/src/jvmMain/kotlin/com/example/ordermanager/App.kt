@@ -39,6 +39,11 @@ fun App() {
     @Composable
 
     fun quickDemo() {
+
+        // Testing chart making functions - Tommy
+        val c : Calculator = Calculator();
+        c.chartTest();
+
         val sampleOrder = remember {
             Order(
                 "Dine-in", mutableListOf(
