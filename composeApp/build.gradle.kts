@@ -1,3 +1,4 @@
+import org.gradle.kotlin.dsl.dependencies
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
@@ -20,6 +21,7 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation("org.jfree:jfreechart:1.5.6")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
