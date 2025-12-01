@@ -1,0 +1,25 @@
+<Orders>
+    <Order id="485">
+        <OrderType>Delivery</OrderType>
+        <Item type="Salad">
+            <Price>10.95</Price>
+            <Quantity>2</Quantity>
+        </Item>
+        <Item type="Burger">
+            <Price>12.95</Price>
+            <Quantity>1</Quantity>
+        </Item>
+        <Item type="Fries">
+            <Price>5.25</Price>
+            <Quantity>3</Quantity>
+        </Item>
+        <Item type="Shake">
+            <Price unit="dollars">8.99</Price>
+            <Quantity>3</Quantity>
+        </Item>
+        <Item type="Soda">
+            <Price unit="dollars">2.99</Price>
+            <Quantity>1</Quantity>
+        </Item>
+    </Order>
+</Orders>
