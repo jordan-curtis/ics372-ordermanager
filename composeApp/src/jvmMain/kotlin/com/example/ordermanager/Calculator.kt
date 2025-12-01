@@ -11,21 +11,28 @@ import org.jfree.data.general.Dataset
 import org.jfree.data.general.DefaultPieDataset
 import java.io.File
 
+/**
+ * Defines a Template pattern for creating charts
+ */
 abstract class ChartBuilderTemplate() {
     abstract var fileName : String;
+    val IMAGE_WIDTH : Int = 640; // Magic number
+    val IMAGE_HEIGHT : Int = 480; // Magic number
 
+    /**
+     * The sequence of methods that are needed to make a chart
+     * @param list List of orders to make a chart out of
+     */
     final fun buildChart(list: List<Order>) {
         var chartMap = makeMap(list);
         var dataset = makeDataset(chartMap);
         var chart = makeChart(dataset);
-        chartToFile(chart, fileName);
+        chartToFile(chart);
     }
 
-    final fun chartToFile(chart: JFreeChart, fileName : String) {
-        val width = 640; // Width of the image
-        val height = 480; // Height of the image
+    final fun chartToFile(chart: JFreeChart) {
         val chartFile = File("$fileName.png");
-        ChartUtils.saveChartAsPNG(chartFile, chart, width, height);
+        ChartUtils.saveChartAsPNG(chartFile, chart, IMAGE_WIDTH, IMAGE_HEIGHT);
     }
 
     protected abstract fun makeMap(list: List<Order>) : Map<String, Number>;
@@ -130,9 +137,7 @@ class QuantityChartBuilder : ChartBuilderTemplate() {
 }
 
 class Calculator {
-    /**
-     * TESTING JFREECHART
-     */
+
     fun chartTest() {
         // Create Dataset object
         var dataset: DefaultPieDataset<String> = DefaultPieDataset();
