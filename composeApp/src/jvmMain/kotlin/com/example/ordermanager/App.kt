@@ -25,7 +25,9 @@ import java.io.File
 @Preview
 fun App() {
 
-    quickDemo()
+    MaterialTheme {
+        OrderGUI()
+    }
 
 
 }
@@ -49,7 +51,10 @@ fun App() {
             Button(onClick = {
 
                 val calculator = Calculator()
-                val chartFile = calculator.chartTest()
+
+                calculator.chartTest() //create the file
+
+                val chartFile = File("chart.png")
 
                 //Png to bitmaP
 

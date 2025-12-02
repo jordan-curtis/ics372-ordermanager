@@ -40,35 +40,31 @@ interface IOrderManager {
      * Adds MANY orders at a time not just one
      * @param orders are the many added orders
      */
-    fun addOrders(orders: List<Order>)
+    fun addManyOrders(orders: List<Order>)
 
     /**
      * Returns the list of started orders
      * @param order is a single order to add
      */
-    fun startOrder(order: Order)
+    fun startOrder(order: Int): Boolean
 
     /**
      * Returns the list of started orders
      * @param order is a single order to add
      */
-    fun completeOrder(order: Order)
+    fun completeOrder(order: Int): Boolean
 
     /**
      * Returns the list of started orders
      * @param order is a single order to add
      */
-    fun cancelOrder(order: Order)
+    fun cancelOrder(order: Int): Boolean
 
     fun getOrder(orderId: Int): Order? //Not null
 
     fun getAllOrders(): List<Order>
 
     fun clearAllOrders()
-
-    fun addOrderChangeListener (listener: OrderChangeListener)
-
-    fun removeOrderChangeListener (listener: OrderChangeListener)
 
 
     /**
