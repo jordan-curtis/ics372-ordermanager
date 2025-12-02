@@ -2,7 +2,7 @@ package com.example.ordermanager
 
 import java.io.File
 
-//helper fun to help me print cool link :D
+//helper fun to help me print cool line :D
 fun printLine() {
     println("=".repeat(30))
 }
