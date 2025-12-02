@@ -1,15 +1,23 @@
 package com.example.ordermanager
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.toComposeImageBitmap
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import org.jfree.chart.title.Title
+import java.io.File
 
 /**
  * Main portion of the order management UI, the screen with the three columns:
@@ -28,6 +36,10 @@ fun OrderGUI(){
     //This is the trigger for recomposing the screen
 
     var recompTrigger by remember { mutableStateOf(0) }
+
+    //var for data analytics, will remember if it is being shown or not
+
+    var showAnalytics by remember { mutableStateOf(false) }
 
     //Registering the callback to actually refresh the UI when orders change
 
@@ -85,10 +97,21 @@ fun OrderGUI(){
             ) {
                 Text("Import Orders")
             }
+
+
+            Spacer(modifier = Modifier.weight(1f))
+
+            //Analytics Button, for a new pop up of analytics
+
+            Button(onClick = {showAnalytics = true}, colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)){
+                Text("Click to view analytics")
+            }
+
         }
 
-        // Three columns
-        Row(modifier = Modifier.fillMaxSize()) {
+        // Three columns, our main section of our UI
+
+        Row(modifier = Modifier.weight(1f)) {
             // Incoming Orders Column
             OrderColumn(
                 title = "Incoming (${incomingOrders.size})",
@@ -141,6 +164,15 @@ fun OrderGUI(){
                     )
             }
         }
+
+    // Analytics popup dialog
+    if (showAnalytics) {
+        OrderAnalytics(
+            completedOrders = completedOrders,
+            onDismiss = { showAnalytics = false }
+        )
+    }
+
     }
 
 /**
@@ -226,8 +258,174 @@ fun OrderCard(order: Order, actionButton: (@Composable (Order) -> Unit)? = null)
             Text(text = "Total: $${String.format("%.2f", order.total)}",
                 fontWeight = FontWeight.Bold)
 
+            if (actionButton != null) {
+                Spacer(modifier = Modifier.height(8.dp))
+                actionButton(order)
+            }
+
 
         }
 
+    }
+}
+
+/**
+ * Carrying over the chart display function
+ * @param orders The list of orders, currently takes in ALL orders
+ * @author Ruben
+ */
+@Composable
+fun chartDisplay(orders : List<Order>){
+
+    var chartImage by remember { mutableStateOf<ImageBitmap?>(null) }
+
+    //Generating chart when app loads
+
+    Column {
+        Button(onClick = {
+
+            val calculator = Calculator()
+
+            //Since this now exists to be updated, it checks to see if there is something in the list to begin with
+
+            //This WILL create a file from the current running application but will default to our test file
+            if(orders.isNotEmpty()){
+                calculator.createProfitChart(orders)
+                val chartFile = File("Output-chart.png")
+                if(chartFile.exists()){
+                    //Png to bitmap
+                    val chartBytes = chartFile.readBytes()
+                    chartImage = org.jetbrains.skia.Image.makeFromEncoded(chartBytes).toComposeImageBitmap()
+                }
+            }
+
+            else {
+                //Use our test chart if no orders exist
+
+                calculator.chartTest()
+                val chartFile = File("chart.png")
+                if(chartFile.exists()){
+                    //Png to bitmap
+                    val chartBytes = chartFile.readBytes()
+                    chartImage = org.jetbrains.skia.Image.makeFromEncoded(chartBytes).toComposeImageBitmap()
+                }
+
+            }
+
+
+        }){
+            Text("Generate Profit Chart")
+        }
+    }
+
+    Spacer(modifier = Modifier.height(16.dp))
+
+    if(chartImage != null){
+        Image(bitmap = chartImage!!, contentDescription = "Profit Stats", modifier = Modifier.fillMaxWidth())
+    }
+}
+
+/**
+ * New analytics section with our chart display implemented
+ * @param completedOrders List, since we only use the completed orders to calculate profit
+ * @author Ruben
+ */
+
+@Composable
+fun OrderAnalytics(completedOrders: List<Order>, onDismiss: () -> Unit){
+
+    //onDismiss to tuck this away and call it back with a button click
+
+    Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)){
+        Card(
+            modifier = Modifier.width(600.dp).height(500.dp).padding(16.dp),colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+        )
+        {
+            Column(modifier = Modifier.fillMaxSize().padding(24.dp)){
+
+                //Adding a header for the button title and the close button
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = " Order Analytics",
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+
+                    Button(onClick = onDismiss) {
+                        Text("Close")
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                //Actual stats section
+
+            }
+        }
+
+        Row(modifier = Modifier.fillMaxSize().padding(16.dp)){
+
+            //Displaying the order stats on the left side
+
+            Column(modifier = Modifier.weight(1f)){
+
+                //Quick important stats
+
+                val totalRevenue = completedOrders.sumOf { it.total }
+
+                val totalOrders = completedOrders.size
+
+                val avgOrder = if (totalOrders > 0) totalRevenue / totalOrders else 0.0
+
+                StatCard("Completed Orders", totalOrders.toString())
+                Spacer(modifier = Modifier.height(12.dp))
+                StatCard("Total current revenue", "$${String.format("%.2f", totalRevenue)}")
+                Spacer(modifier = Modifier.height(12.dp))
+                StatCard("Average Order Value","$${String.format("%.2f", avgOrder)}" )
+
+            }
+
+            Spacer(modifier = Modifier.width(24.dp))
+
+            //Displaying the chart to the right
+
+            Column (modifier = Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally){
+                chartDisplay(completedOrders)
+            }
+
+        }
+    }
+}
+
+/**
+ * Small stat card for analytics makes it very easy to just slap the data
+ * in here and call it inside of the analytics section
+ */
+@Composable
+fun StatCard(label: String, value: String) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer
+        )
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(
+                text = label,
+                fontSize = 14.sp,
+                color = MaterialTheme.colorScheme.onPrimaryContainer
+            )
+            Text(
+                text = value,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onPrimaryContainer
+            )
+        }
     }
 }

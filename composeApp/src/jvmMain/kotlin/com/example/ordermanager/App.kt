@@ -39,40 +39,7 @@ fun App() {
      * @author Ruben
      */
 
-    @Composable
-    fun chartDisplay(){
 
-        var chartImage by remember { mutableStateOf<ImageBitmap?>(null) }
-
-        //Generating chart when app loads
-
-        Column(modifier = Modifier.padding(16.dp)) {
-
-            Button(onClick = {
-
-                val calculator = Calculator()
-
-                calculator.chartTest() //create the file
-
-                val chartFile = File("chart.png")
-
-                //Png to bitmaP
-
-                val chartBytes = chartFile.readBytes()
-                chartImage = org.jetbrains.skia.Image.makeFromEncoded(chartBytes).toComposeImageBitmap()
-            }){
-                Text("Generate Profit Chart")
-            }
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        if(chartImage != null){
-            Image(bitmap = chartImage!!, contentDescription = "Profit Stats", modifier = Modifier.fillMaxWidth())
-        }
-
-
-    }
 
     @Composable
     fun horizontalLayout(){
@@ -143,7 +110,7 @@ fun App() {
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.padding(bottom = 16.dp)
                     )
-                    chartDisplay()
+
                 }
 
 
