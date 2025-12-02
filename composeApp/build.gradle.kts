@@ -22,6 +22,8 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation("org.jfree:jfreechart:1.5.6")
+            implementation("javax.json:javax.json-api:1.1.4")
+            implementation("org.glassfish:javax.json:1.1.4")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
