@@ -6,6 +6,7 @@ import org.jfree.chart.JFreeChart
 import org.jfree.chart.labels.PieSectionLabelGenerator
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator
 import org.jfree.chart.plot.PiePlot
+import org.jfree.chart.plot.Plot
 import org.jfree.data.category.DefaultCategoryDataset
 import org.jfree.data.general.Dataset
 import org.jfree.data.general.DefaultPieDataset
@@ -31,8 +32,12 @@ abstract class ChartBuilderTemplate() {
     }
 
     final fun chartToFile(chart: JFreeChart) {
-        val chartFile = File("$fileName.png");
-        ChartUtils.saveChartAsPNG(chartFile, chart, IMAGE_WIDTH, IMAGE_HEIGHT);
+        val f = File("$fileName.png");
+        ChartUtils.saveChartAsPNG(f, chart, IMAGE_WIDTH, IMAGE_HEIGHT);
+    }
+
+    final fun getFile(): File {
+        return File("$fileName.png");
     }
 
     protected abstract fun makeMap(list: List<Order>) : Map<String, Number>;
