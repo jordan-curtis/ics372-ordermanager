@@ -283,11 +283,20 @@ fun chartDisplay(orders : List<Order>){
 
     Column {
         Button(onClick = {
+            // Initialize ChartBuilders
+            val profitBuilder: ProfitChartBuilder = ProfitChartBuilder();
+            val quantityBuilder: QuantityChartBuilder = QuantityChartBuilder();
+            // Build charts
+            profitBuilder.buildChart(orders);
+            quantityBuilder.buildChart(orders);
+            // Get references to Files
+            val profitFile: File = profitBuilder.getFile();
+            val quantityFile: File = quantityBuilder.getFile();
+            // Update chartImage
+            val chartBytes = profitFile.readBytes();
+            chartImage = org.jetbrains.skia.Image.makeFromEncoded(chartBytes).toComposeImageBitmap()
 
-            val calculator = Calculator()
-
-            //Since this now exists to be updated, it checks to see if there is something in the list to begin with
-
+            /*
             //This WILL create a file from the current running application but will default to our test file
             if(orders.isNotEmpty()){
                 calculator.createProfitChart(orders)
@@ -298,10 +307,8 @@ fun chartDisplay(orders : List<Order>){
                     chartImage = org.jetbrains.skia.Image.makeFromEncoded(chartBytes).toComposeImageBitmap()
                 }
             }
-
             else {
                 //Use our test chart if no orders exist
-
                 calculator.chartTest()
                 val chartFile = File("chart.png")
                 if(chartFile.exists()){
@@ -309,8 +316,8 @@ fun chartDisplay(orders : List<Order>){
                     val chartBytes = chartFile.readBytes()
                     chartImage = org.jetbrains.skia.Image.makeFromEncoded(chartBytes).toComposeImageBitmap()
                 }
-
             }
+             */
 
 
         }){
