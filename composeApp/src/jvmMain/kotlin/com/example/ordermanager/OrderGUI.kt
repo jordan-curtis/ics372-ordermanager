@@ -380,20 +380,24 @@ fun OrderAnalytics(completedOrders: List<Order>, onDismiss: () -> Unit){
             //Displaying the order stats on the left side
 
             Column(modifier = Modifier.weight(1f)){
-
+                // Make SalesReport object from all completed orders
+                val report : SalesReport = SalesReport(completedOrders);
                 //Quick important stats
+                val totalRevenue = report.totalPrice;
+                val totalExpense = report.totalExpense;
+                val totalProfit = report.totalProfit;
+                val totalOrders = completedOrders.size;
+                val avgOrder = if (totalOrders > 0) totalRevenue / totalOrders else 0.0;
 
-                val totalRevenue = completedOrders.sumOf { it.total }
-
-                val totalOrders = completedOrders.size
-
-                val avgOrder = if (totalOrders > 0) totalRevenue / totalOrders else 0.0
-
-                StatCard("Completed Orders", totalOrders.toString())
-                Spacer(modifier = Modifier.height(12.dp))
-                StatCard("Total current revenue", "$${String.format("%.2f", totalRevenue)}")
-                Spacer(modifier = Modifier.height(12.dp))
-                StatCard("Average Order Value","$${String.format("%.2f", avgOrder)}" )
+                StatCard("Completed Orders", totalOrders.toString());
+                Spacer(modifier = Modifier.height(12.dp));
+                StatCard("Total Current Revenue", "$${String.format("%.2f", totalRevenue)}");
+                Spacer(modifier = Modifier.height(12.dp));
+                StatCard("Total Current Expenses", "$${String.format("%.2f", totalExpense)}");
+                Spacer(modifier = Modifier.height(12.dp));
+                StatCard("Total Current Profit", "$${String.format("%.2f", totalProfit)}");
+                Spacer(modifier = Modifier.height(12.dp));
+                StatCard("Average Order Price","$${String.format("%.2f", avgOrder)}" );
 
             }
 
