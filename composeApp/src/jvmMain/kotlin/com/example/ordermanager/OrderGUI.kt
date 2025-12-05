@@ -277,10 +277,11 @@ fun OrderCard(order: Order, actionButton: (@Composable (Order) -> Unit)? = null)
 @Composable
 fun chartDisplay(orders : List<Order>){
 
-    var chartImage by remember { mutableStateOf<ImageBitmap?>(null) }
+    //var chartImage by remember { mutableStateOf<ImageBitmap?>(null) }
+    var profitChartImage by remember { mutableStateOf<ImageBitmap?>(null) }
+    var quantityChartImage by remember { mutableStateOf<ImageBitmap?>(null) }
 
     //Generating chart when app loads
-
     Column {
         Button(onClick = {
             // Initialize ChartBuilders
@@ -292,9 +293,9 @@ fun chartDisplay(orders : List<Order>){
             // Get references to Files
             val profitFile: File = profitBuilder.getFile();
             val quantityFile: File = quantityBuilder.getFile();
-            // Update chartImage
-            val chartBytes = profitFile.readBytes();
-            chartImage = org.jetbrains.skia.Image.makeFromEncoded(chartBytes).toComposeImageBitmap()
+            // Update chartImages
+            profitChartImage = org.jetbrains.skia.Image.makeFromEncoded(profitFile.readBytes()).toComposeImageBitmap()
+            quantityChartImage = org.jetbrains.skia.Image.makeFromEncoded(quantityFile.readBytes()).toComposeImageBitmap()
 
             /*
             //This WILL create a file from the current running application but will default to our test file
@@ -318,8 +319,6 @@ fun chartDisplay(orders : List<Order>){
                 }
             }
              */
-
-
         }){
             Text("Generate Profit Chart")
         }
@@ -327,8 +326,9 @@ fun chartDisplay(orders : List<Order>){
 
     Spacer(modifier = Modifier.height(16.dp))
 
-    if(chartImage != null){
-        Image(bitmap = chartImage!!, contentDescription = "Profit Stats", modifier = Modifier.fillMaxWidth())
+    if(profitChartImage != null && quantityChartImage != null){
+        Image(bitmap = profitChartImage!!, contentDescription = "Profit Stats", modifier = Modifier.fillMaxWidth());
+        Image(bitmap = quantityChartImage!!, contentDescription = "Profit Stats", modifier = Modifier.fillMaxWidth());
     }
 }
 
