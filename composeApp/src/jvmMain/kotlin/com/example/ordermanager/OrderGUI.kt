@@ -320,7 +320,7 @@ fun chartDisplay(orders : List<Order>){
             }
              */
         }){
-            Text("Generate Profit Chart")
+            Text("Generate Charts from Sales Data")
         }
     }
 
