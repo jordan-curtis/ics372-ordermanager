@@ -3,7 +3,7 @@ package com.example.ordermanager
 import com.example.ordermanager.Order.InvalidOrderStatusChange
 import java.time.LocalDateTime
 
-abstract class Orderable(val items: MutableList<Item>, initialStatus: OrderStatus = OrderStatus.INCOMING) {
+abstract class Orderable(val items: List<Item>, initialStatus: OrderStatus = OrderStatus.INCOMING) {
     enum class OrderStatus { INCOMING, STARTED, COMPLETED, CANCELLED }
 
     companion object { private var staticID: Int = 0 }
@@ -35,16 +35,13 @@ abstract class Orderable(val items: MutableList<Item>, initialStatus: OrderStatu
         status = OrderStatus.CANCELLED
     }
 
-    override fun toString(): String {
-        return "$orderType Order"
-    }
 }
 
-class PickupOrder(items: MutableList<Item>, var pickupStatus: PickupStatus = PickupStatus.PREPARING) : Orderable(items) {
+class PickupOrder(items: List<Item>, var pickupStatus: PickupStatus = PickupStatus.PREPARING) : Orderable(items) {
     enum class PickupStatus { PREPARING, READY }
 
     override val orderType: String
-        get() = "Pickup"
+        get() = "PICKUP"
 
     override fun completeOrder() {
         require(super.status == OrderStatus.STARTED) {
@@ -55,12 +52,16 @@ class PickupOrder(items: MutableList<Item>, var pickupStatus: PickupStatus = Pic
         super.completedTime = LocalDateTime.now()
         pickupStatus = PickupStatus.READY
     }
+
+    override fun toString(): String {
+        return "Order Type: $orderType\nOrder Status: $status\nPickup Status: $pickupStatus"
+    }
 }
 
-class TogoOrder(items: MutableList<Item>, var togoStatus: TogoStatus = TogoStatus.PREPARING) : Orderable(items) {
+class TogoOrder(items: List<Item>, var togoStatus: TogoStatus = TogoStatus.PREPARING) : Orderable(items) {
     enum class TogoStatus { PREPARING, READY }
     override val orderType: String
-        get() = "To-Go"
+        get() = "TO-GO"
 
     override fun completeOrder() {
         require(super.status == OrderStatus.STARTED) {
@@ -71,12 +72,16 @@ class TogoOrder(items: MutableList<Item>, var togoStatus: TogoStatus = TogoStatu
         super.completedTime = LocalDateTime.now()
         togoStatus = TogoStatus.READY
     }
+
+    override fun toString(): String {
+        return "Order Type: $orderType\nOrder Status: $status\nTogo Status: $togoStatus"
+    }
 }
 
-class DeliveryOrder(items: MutableList<Item>, var deliveryStatus: DeliveryStatus = DeliveryStatus.PREPARING) : Orderable(items) {
+class DeliveryOrder(items: List<Item>, var deliveryStatus: DeliveryStatus = DeliveryStatus.PREPARING) : Orderable(items) {
     enum class DeliveryStatus { PREPARING, DELIVERING, ARRIVED }
     override val orderType: String
-        get() = "Delivery"
+        get() = "DELIVERY"
 
     // Allows for the ability to have a departure time for the delivery.
     var driverDepartureTime: LocalDateTime? = null
@@ -100,10 +105,14 @@ class DeliveryOrder(items: MutableList<Item>, var deliveryStatus: DeliveryStatus
         driverDepartureTime = LocalDateTime.now()
         deliveryStatus = DeliveryStatus.DELIVERING
     }
+
+    override fun toString(): String {
+        return "Order Type: $orderType\nOrder Status: $status\nDelivery Status: $deliveryStatus"
+    }
 }
 
 fun main() {
-    val items: MutableList<Item> = mutableListOf(Item())
+    val items: List<Item> = listOf(Item("Burger", 5.00))
 
     val orders: List<Orderable> = listOf(
         PickupOrder(items),
