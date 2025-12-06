@@ -114,10 +114,10 @@ class OrderManager : IOrderManager {
 
         while (iterator.hasNext()) {
             val order = iterator.next()
-            if (order.orderId == startOrderId) {
+            if (order.orderID == startOrderId) {
                 try {
                     order.startOrder()
-                } catch (e: Order.InvalidOrderStatusChange) {
+                } catch (e: InvalidOrderStatusChange) {
                     return false
                 }
 
@@ -142,10 +142,10 @@ class OrderManager : IOrderManager {
 
         while (iterator.hasNext()) {
             val order = iterator.next()
-            if (order.orderId == completeOrderId) {
+            if (order.orderID == completeOrderId) {
                 try {
                     order.completeOrder()
-                } catch (e: Order.InvalidOrderStatusChange) {
+                } catch (e: InvalidOrderStatusChange) {
                     return false
                 }
 
@@ -170,10 +170,10 @@ class OrderManager : IOrderManager {
 
         while (iterator.hasNext()) {
             val order = iterator.next()
-            if (order.orderId == cancelOrderId) {
+            if (order.orderID == cancelOrderId) {
                 try {
                     order.cancelOrder()
-                } catch (e: Order.InvalidOrderStatusChange) {
+                } catch (e: InvalidOrderStatusChange) {
                     return false
                 }
 
@@ -190,10 +190,10 @@ class OrderManager : IOrderManager {
 
         while (iterator.hasNext()) {
             val order = iterator.next()
-            if (order.orderId == cancelOrderId) {
+            if (order.orderID == cancelOrderId) {
                 try {
                     order.cancelOrder()
-                } catch (e: Order.InvalidOrderStatusChange) {
+                } catch (e: InvalidOrderStatusChange) {
                     return false
                 }
 
@@ -216,19 +216,19 @@ class OrderManager : IOrderManager {
      */
     override fun getOrder(getOrderId: Int): Order? {
         for (order in incomingOrders) {
-            if (order.orderId == getOrderId) {
+            if (order.orderID == getOrderId) {
                 return order
             }
         }
 
         for (order in startedOrders) {
-            if (order.orderId == getOrderId) {
+            if (order.orderID == getOrderId) {
                 return order
             }
         }
 
         for (order in completedOrders) {
-            if (order.orderId == getOrderId) {
+            if (order.orderID == getOrderId) {
                 return order
             }
         }

@@ -62,11 +62,11 @@ fun App() {
         c.chartTest();
 
         val sampleOrder = remember {
-            Order(
-                "Dine-in", mutableListOf(
+            OrderGenerator.orderGenerator(
+                "TOGO", mutableListOf(
                     Item("Burger", 8.99, 1),
                     Item("Fries", 3.99, 2),
-                    Item("Milkshake", 5.99, 1)
+                    Item("Shake", 5.99, 1)
                 )
             )
         }
@@ -85,7 +85,7 @@ fun App() {
 
             Card(modifier = Modifier.fillMaxWidth()) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text("Order #${sampleOrder.orderId}", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                    Text("Order #${sampleOrder.orderID}", fontSize = 20.sp, fontWeight = FontWeight.Bold)
                     Text("Type: ${sampleOrder.orderType}")
                     Text("Status: ${sampleOrder.status}")
 

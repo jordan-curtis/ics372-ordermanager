@@ -53,13 +53,7 @@ class JsonOrderParser : OrderParser {
                 }
 
                 // add final order
-                results.add(
-                    Order(
-                        orderType,
-                        items,
-                        Order.OrderStatus.INCOMING
-                    )
-                )
+                results.add(OrderGenerator.orderGenerator(orderType, items))
 
             } catch (e: Exception) {
                 println("error reading json file: ${file.name}")
@@ -116,13 +110,7 @@ class XmlOrderParser : OrderParser {
                 }
 
                 // add final order
-                results.add(
-                    Order(
-                        orderType,
-                        items,
-                        Order.OrderStatus.INCOMING
-                    )
-                )
+                results.add(OrderGenerator.orderGenerator(orderType, items))
 
             } catch (e: Exception) {
                 println("error reading xml file: ${file.name}")

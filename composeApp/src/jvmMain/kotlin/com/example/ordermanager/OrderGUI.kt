@@ -76,11 +76,11 @@ fun OrderGUI(){
 
             Button(
                 onClick = {
-                    val sampleOrder = Order(
-                        orderType = "Dine-in",
-                        items = mutableListOf(
+                    val sampleOrder = OrderGenerator.orderGenerator(
+                        "TOGO", mutableListOf(
                             Item("Burger", 8.99, 1),
-                            Item("Fries", 3.99, 2)
+                            Item("Fries", 3.99, 2),
+                            Item("Shake", 5.99, 1)
                         )
                     )
                     orderManager.addOrder(sampleOrder)
@@ -119,7 +119,7 @@ fun OrderGUI(){
                 modifier = Modifier.weight(1f),
                 actionButton = { order ->
                     Button(
-                        onClick = { orderManager.startOrder(order.orderId) },
+                        onClick = { orderManager.startOrder(order.orderID) },
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text("Start")
@@ -137,14 +137,14 @@ fun OrderGUI(){
                 actionButton = { order ->
                     Column {
                         Button(
-                            onClick = { orderManager.completeOrder(order.orderId) },
+                            onClick = { orderManager.completeOrder(order.orderID) },
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             Text("Complete")
                         }
                         Spacer(modifier = Modifier.height(4.dp))
                         OutlinedButton(
-                            onClick = { orderManager.cancelOrder(order.orderId) },
+                            onClick = { orderManager.cancelOrder(order.orderID) },
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             Text("Cancel")
@@ -200,7 +200,7 @@ fun OrderColumn(
             LazyColumn(
                 modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(8.dp)
             ){
-                items(orders, key = {it.orderId}) {order -> OrderCard(order = order, actionButton = actionButton)}
+                items(orders, key = {it.orderID}) {order -> OrderCard(order = order, actionButton = actionButton)}
 
             }
 
@@ -226,7 +226,7 @@ fun OrderCard(order: Order, actionButton: (@Composable (Order) -> Unit)? = null)
 
             //For order ID
             Text(
-                text = "Order: #${order.orderId}", fontWeight = FontWeight.Bold, fontSize =  16.sp
+                text = "Order: #${order.orderID}", fontWeight = FontWeight.Bold, fontSize =  16.sp
             )
 
             //For order type
