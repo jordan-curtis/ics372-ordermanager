@@ -7,72 +7,54 @@
 "items": [
 {"name": "Burger", "price": 8.99, "quantity": 1},
 {"name": "Fries", "price": 3.99, "quantity": 2},
-{"name": "Shake", "price": 5.99, "quantity": 1}
+{"name": "Shake", "price": 8.95, "quantity": 1}
 ]
 },
 {
 "orderId": 2,
-"orderType": "TOGO",
+"orderType": "PICKUP",
 "status": "INCOMING",
 "items": [
-{"name": "Burger", "price": 8.99, "quantity": 1},
-{"name": "Fries", "price": 3.99, "quantity": 2},
-{"name": "Shake", "price": 5.99, "quantity": 1}
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
 ]
-}
- ],
-"started": [],
-"completed": [
+},
 {
 "orderId": 3,
 "orderType": "TOGO",
-"status": "COMPLETED",
+"status": "INCOMING",
 "items": [
-{"name": "Burger", "price": 8.99, "quantity": 1},
-{"name": "Fries", "price": 3.99, "quantity": 2},
-{"name": "Shake", "price": 5.99, "quantity": 1}
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
 ]
 },
 {
 "orderId": 4,
-"orderType": "TOGO",
-"status": "COMPLETED",
+"orderType": "DELIVERY",
+"status": "INCOMING",
 "items": [
-{"name": "Burger", "price": 8.99, "quantity": 1},
-{"name": "Fries", "price": 3.99, "quantity": 2},
-{"name": "Shake", "price": 5.99, "quantity": 1}
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
 ]
 },
 {
 "orderId": 5,
-"orderType": "TOGO",
-"status": "COMPLETED",
+"orderType": "PICKUP",
+"status": "INCOMING",
 "items": [
-{"name": "Burger", "price": 8.99, "quantity": 1},
-{"name": "Fries", "price": 3.99, "quantity": 2},
-{"name": "Shake", "price": 5.99, "quantity": 1}
-]
-},
-{
-"orderId": 6,
-"orderType": "TOGO",
-"status": "COMPLETED",
-"items": [
-{"name": "Burger", "price": 8.99, "quantity": 1},
-{"name": "Fries", "price": 3.99, "quantity": 2},
-{"name": "Shake", "price": 5.99, "quantity": 1}
-]
-},
-{
-"orderId": 7,
-"orderType": "TOGO",
-"status": "COMPLETED",
-"items": [
-{"name": "Burger", "price": 8.99, "quantity": 1},
-{"name": "Fries", "price": 3.99, "quantity": 2},
-{"name": "Shake", "price": 5.99, "quantity": 1}
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
 ]
 }
  ],
+"started": [],
+"completed": [],
 "cancelled": []
 }

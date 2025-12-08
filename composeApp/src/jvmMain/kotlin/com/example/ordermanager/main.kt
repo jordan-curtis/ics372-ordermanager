@@ -35,7 +35,7 @@ fun main() = application {
             exitApplication()
         },
         state = screenState,
-        alwaysOnTop = true
+        alwaysOnTop = false
     ) {
         App()
     }

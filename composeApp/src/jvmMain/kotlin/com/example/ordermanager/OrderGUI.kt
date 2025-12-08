@@ -18,6 +18,12 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import org.jfree.chart.title.Title
 import java.io.File
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
+import java.awt.FileDialog
+import java.awt.Frame
+import java.io.File.*
+
 
 /**
  * Main portion of the order management UI, the screen with the three columns:
@@ -74,28 +80,74 @@ fun OrderGUI(){
 
             //Add sample order button
 
+            //Refactored into test directory button
+
+
+            //Adding actual import functionality
+            //Setting initial directory to testFiles
             Button(
                 onClick = {
-                    val sampleOrder = OrderGenerator.orderGenerator(
-                        "TOGO", mutableListOf(
-                            Item("Burger", 8.99, 1),
-                            Item("Fries", 3.99, 2),
-                            Item("Shake", 5.99, 1)
-                        )
-                    )
-                    OrderManager.addOrder(sampleOrder)
+                    // Set the initial directory to "testFiles"
+                    val initialDir = File("../testFiles")
+                    val fileDialog = FileDialog(Frame(), "Select Test Orders Directory", FileDialog.LOAD)
+
+                    if (initialDir.exists() && initialDir.isDirectory) {
+                        fileDialog.directory = initialDir.absolutePath
+                    }
+                    fileDialog.isMultipleMode = true
+
+                    fileDialog.isVisible = true
+
+                    val selectedPath = fileDialog.directory
+                    if (selectedPath != null) {
+                        val selectedDir = File(selectedPath)
+
+                        // Only JSON or XML files
+                        val validFiles = selectedDir.listFiles { file ->
+                            file.extension.lowercase() in listOf("json", "xml")
+                        } ?: emptyArray()
+
+                        // Import orders from each valid file's directory
+                        validFiles.forEach { file ->
+                            OrderManager.importOrdersFromDirectory(file.parentFile)
+                        }
+                    } else {
+                        println("No directory selected!")
+                    }
                 }
             ) {
-                Text("Add Sample Order")
+                Text("Load Test Orders")
             }
 
             // Import from directory button
             Button(
                 onClick = {
-                    OrderManager.importOrdersFromDirectory()
+                    //Adding actual import functionality
+                    val fileDialog = FileDialog(Frame(), "Select Your Order " +
+                            "Directory", FileDialog.LOAD)
+
+                    fileDialog.isMultipleMode = true
+
+                    fileDialog.isVisible = true
+
+                    val selectedPath = fileDialog.directory
+                    if(selectedPath != null){
+
+                        val selectedDir = File(selectedPath)
+
+                        //Only JSON or XML files
+
+                        val validFiles = selectedDir.listFiles { file ->
+                            file.extension.lowercase() in listOf("json", "xml")
+                        } ?: emptyArray()
+
+                        //Import the actual orders now
+                        validFiles.forEach{ file -> OrderManager
+                            .importOrdersFromDirectory(file.parentFile)}
+                    }
                 }
             ) {
-                Text("Import Orders")
+                Text("Open Directory")
             }
 
 
@@ -214,8 +266,7 @@ fun OrderColumn(
  */
 
 @Composable
-fun OrderCard(order: Order, actionButton: (@Composable (Order) -> Unit)? = null)
-{
+fun OrderCard(order: Order, actionButton: (@Composable (Order) -> Unit)? = null) {
     Card(modifier = Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface))
     {
 
@@ -327,8 +378,10 @@ fun chartDisplay(orders : List<Order>){
     Spacer(modifier = Modifier.height(16.dp))
 
     if(profitChartImage != null && quantityChartImage != null){
-        Image(bitmap = profitChartImage!!, contentDescription = "Profit Stats", modifier = Modifier.fillMaxWidth());
-        Image(bitmap = quantityChartImage!!, contentDescription = "Profit Stats", modifier = Modifier.fillMaxWidth());
+        Image(bitmap = profitChartImage!!, contentDescription = "Profit " +
+                "Stats", modifier = Modifier.fillMaxWidth().height(350.dp));
+        Image(bitmap = quantityChartImage!!, contentDescription = "Profit " +
+                "Stats", modifier = Modifier.fillMaxWidth().height(350.dp));
     }
 }
 
@@ -339,16 +392,22 @@ fun chartDisplay(orders : List<Order>){
  */
 
 @Composable
-fun OrderAnalytics(completedOrders: List<Order>, onDismiss: () -> Unit){
+fun OrderAnalytics(completedOrders: List<Order>, onDismiss: () -> Unit) {
 
     //onDismiss to tuck this away and call it back with a button click
 
-    Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)){
+    Dialog(
+        onDismissRequest = onDismiss,
+        properties = DialogProperties(usePlatformDefaultWidth = false)
+    ) {
         Card(
-            modifier = Modifier.width(700.dp).height(550.dp).padding(16.dp),
+            modifier = Modifier.fillMaxWidth(0.95f).fillMaxHeight(0.95f)
+                .padding(12
+                .dp),
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
         )
-        { Column(modifier = Modifier.fillMaxSize().padding(16.dp)){
+        {
+            Column(modifier = Modifier.fillMaxSize().padding(20.dp)) {
 
                 //Adding a header for the button title and the close button
 
@@ -368,75 +427,109 @@ fun OrderAnalytics(completedOrders: List<Order>, onDismiss: () -> Unit){
                     }
                 }
 
+                Spacer(modifier = Modifier.height(12.dp))
+
+
+                //Adding this for cleaner looks
+
+                Divider()
+
                 Spacer(modifier = Modifier.height(24.dp))
 
                 //Actual stats section
 
+
+                Row(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+
+                    //Displaying the order stats on the left side
+
+                    Column(
+                        modifier = Modifier.weight(1f).fillMaxHeight().padding(
+                            end
+                            = 16.dp
+                        ).verticalScroll(rememberScrollState())
+                    )
+                    {
+                        // Make SalesReport object from all completed orders
+                        val report: SalesReport = SalesReport(completedOrders);
+                        //Quick important stats
+                        val totalRevenue = report.totalPrice;
+                        val totalExpense = report.totalExpense;
+                        val totalProfit = report.totalProfit;
+                        val totalOrders = completedOrders.size;
+                        val avgOrder =
+                            if (totalOrders > 0) totalRevenue / totalOrders else 0.0;
+
+                        StatCard("Completed Orders", totalOrders.toString());
+                        Spacer(modifier = Modifier.height(12.dp));
+                        StatCard(
+                            "Total Current Revenue",
+                            "$${String.format("%.2f", totalRevenue)}"
+                        );
+                        Spacer(modifier = Modifier.height(12.dp));
+                        StatCard(
+                            "Total Current Expenses",
+                            "$${String.format("%.2f", totalExpense)}"
+                        );
+                        Spacer(modifier = Modifier.height(12.dp));
+                        StatCard(
+                            "Total Current Profit",
+                            "$${String.format("%.2f", totalProfit)}"
+                        );
+                        Spacer(modifier = Modifier.height(12.dp));
+                        StatCard(
+                            "Average Order Price",
+                            "$${String.format("%.2f", avgOrder)}"
+                        );
+
+                    }
+
+                    Spacer(modifier = Modifier.width(24.dp))
+
+                    //Displaying the chart to the right
+
+                    Column(
+                        modifier = Modifier.weight(1f).fillMaxHeight(),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        chartDisplay(completedOrders)
+                    }
+
+                }
             }
-        }
 
-        Row(modifier = Modifier.fillMaxSize().padding(16.dp)){
 
-            //Displaying the order stats on the left side
-
-            Column(modifier = Modifier.weight(1f)){
-                // Make SalesReport object from all completed orders
-                val report : SalesReport = SalesReport(completedOrders);
-                //Quick important stats
-                val totalRevenue = report.totalPrice;
-                val totalExpense = report.totalExpense;
-                val totalProfit = report.totalProfit;
-                val totalOrders = completedOrders.size;
-                val avgOrder = if (totalOrders > 0) totalRevenue / totalOrders else 0.0;
-
-                StatCard("Completed Orders", totalOrders.toString());
-                Spacer(modifier = Modifier.height(12.dp));
-                StatCard("Total Current Revenue", "$${String.format("%.2f", totalRevenue)}");
-                Spacer(modifier = Modifier.height(12.dp));
-                StatCard("Total Current Expenses", "$${String.format("%.2f", totalExpense)}");
-                Spacer(modifier = Modifier.height(12.dp));
-                StatCard("Total Current Profit", "$${String.format("%.2f", totalProfit)}");
-                Spacer(modifier = Modifier.height(12.dp));
-                StatCard("Average Order Price","$${String.format("%.2f", avgOrder)}" );
-
-            }
-
-            Spacer(modifier = Modifier.width(24.dp))
-
-            //Displaying the chart to the right
-
-            Column (modifier = Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally){
-                chartDisplay(completedOrders)
-            }
-
-        }
-    }
-}
-
-/**
- * Small stat card for analytics makes it very easy to just slap the data
- * in here and call it inside of the analytics section
- */
-@Composable
-fun StatCard(label: String, value: String) {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
-        )
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(
-                text = label,
-                fontSize = 14.sp,
-                color = MaterialTheme.colorScheme.onPrimaryContainer
-            )
-            Text(
-                text = value,
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onPrimaryContainer
-            )
         }
     }
 }
+
+
+
+        /**
+         * Small stat card for analytics makes it very easy to just slap the data
+         * in here and call it inside of the analytics section
+         */
+        @Composable
+        fun StatCard(label: String, value: String) {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer
+                )
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Text(
+                        text = label,
+                        fontSize = 14.sp,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
+                    Text(
+                        text = value,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
+                }
+            }
+        }
+
