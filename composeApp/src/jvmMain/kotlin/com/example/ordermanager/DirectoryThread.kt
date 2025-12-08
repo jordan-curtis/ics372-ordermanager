@@ -7,7 +7,8 @@ import kotlinx.coroutines.*
 
 object DirectoryThread {
     var shouldRun : Boolean = true;
-     fun runThread() {
+
+    fun runThread() {
         GlobalScope.launch {
             withContext(Dispatchers.Default) { // this: CoroutineScope
                 // Ensure data directory is created
@@ -15,8 +16,6 @@ object DirectoryThread {
                 if (!dataDir.exists()) { dataDir.mkdir() };
 
                 while (shouldRun) {
-                    println("Polling directory: ${dataDir.absolutePath}");
-
                     val files: Array<File> = dataDir.listFiles();
                     if (files.isNotEmpty()) {
                         val jsonParser: JsonOrderParser = JsonOrderParser();
@@ -31,22 +30,11 @@ object DirectoryThread {
                             println("Deleting: ${file.name}");
                             file.delete();
                         }
-
-                        for (o in orders) {
-                            println(o.orderID);
-                        }
                         OrderManager.addManyOrders(orders);
                     }
                     delay(1.seconds)
-
-                    //OrderManager.addOrder(sampleOrder);
                 }
             }
         }
     }
-}
-
-suspend fun greet() {
-    println("The greet() on the thread: ${Thread.currentThread().name}");
-    delay(1.seconds);
 }
