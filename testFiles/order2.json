@@ -1,0 +1,9 @@
+{
+  "order": {
+    "type": "Books",
+    "items": [
+      {"name": "Clean Code", "price": 30.00, "quantity": 1},
+      {"name": "Design Patterns", "price": 45.00, "quantity": 1}
+    ]
+  }
+}

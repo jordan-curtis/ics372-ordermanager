@@ -109,7 +109,8 @@ fun OrderGUI(){
 
                         // Import orders from each valid file's directory
                         validFiles.forEach { file ->
-                            OrderManager.importOrdersFromDirectory(file.parentFile)
+                            OrderManager.importOrdersFromDirectory(file
+                                .parentFile, deleteFiles = false)
                         }
                     } else {
                         println("No directory selected!")
@@ -143,7 +144,8 @@ fun OrderGUI(){
 
                         //Import the actual orders now
                         validFiles.forEach{ file -> OrderManager
-                            .importOrdersFromDirectory(file.parentFile)}
+                            .importOrdersFromDirectory(file.parentFile,
+                                deleteFiles = false)}
                     }
                 }
             ) {

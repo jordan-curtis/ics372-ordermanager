@@ -1,0 +1,9 @@
+{
+  "order": {
+    "type": "Electronics",
+    "items": [
+      {"name": "Laptop", "price": 1200.00, "quantity": 1},
+      {"name": "Mouse", "price": 25.00, "quantity": 2}
+    ]
+  }
+}

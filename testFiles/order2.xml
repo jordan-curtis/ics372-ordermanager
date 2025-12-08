@@ -1,0 +1,11 @@
+<Order>
+    <OrderType>Books</OrderType>
+    <Item type="Clean Code">
+        <Price>30.00</Price>
+        <Quantity>1</Quantity>
+    </Item>
+    <Item type="Design Patterns">
+        <Price>45.00</Price>
+        <Quantity>1</Quantity>
+    </Item>
+</Order>

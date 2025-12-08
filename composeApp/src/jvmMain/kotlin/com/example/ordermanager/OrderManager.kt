@@ -253,7 +253,8 @@ object OrderManager : IOrderManager {
      * @param directory - The directory you want to scan for order files
      * @author Ruben Vallejo
      */
-    fun importOrdersFromDirectory(directory: File = File("data")) {
+    fun importOrdersFromDirectory(directory: File = File("data"),
+                                  deleteFiles: Boolean = true) {
 
         if (!directory.exists()) {
             directory.mkdir()
@@ -272,11 +273,16 @@ object OrderManager : IOrderManager {
 
         //Delete the files once processed
 
+        //Only delete if requested
+
+        if(deleteFiles){
+
         directory.listFiles()?.forEach { file ->
             if (file.extension.lowercase() in listOf("json", "xml")) {
                 if (file.delete()) {
                     println("Now deleted ${file.name}")
                 }
+            }
             }
         }
     }
