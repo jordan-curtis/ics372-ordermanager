@@ -30,8 +30,8 @@ import java.io.File
 fun OrderGUI(){
 
     //Create an Ordermanager instance
-
-    val orderManager = remember { OrderManager() }
+    //Now a singleton.
+    //val orderManager = remember { OrderManager() }
 
     //This is the trigger for recomposing the screen
 
@@ -45,8 +45,8 @@ fun OrderGUI(){
 
     //Recomposed each and every time there is an order change
 
-    LaunchedEffect(orderManager){
-        orderManager.onOrderChange = {
+    LaunchedEffect(OrderManager){
+        OrderManager.onOrderChange = {
             recompTrigger++
         }
     }
@@ -54,9 +54,9 @@ fun OrderGUI(){
 
     //Reading in the current orders and triggering a recomposition when orders change
 
-    val incomingOrders = remember(recompTrigger) {orderManager.getIncomingOrders()}
-    val startedOrders = remember(recompTrigger) {orderManager.getStartedOrders()}
-    val completedOrders = remember(recompTrigger) {orderManager.getCompletedOrders()}
+    val incomingOrders = remember(recompTrigger) {OrderManager.getIncomingOrders()}
+    val startedOrders = remember(recompTrigger) {OrderManager.getStartedOrders()}
+    val completedOrders = remember(recompTrigger) {OrderManager.getCompletedOrders()}
 
     /**
      * Setting up the UI elements
@@ -83,7 +83,7 @@ fun OrderGUI(){
                             Item("Shake", 5.99, 1)
                         )
                     )
-                    orderManager.addOrder(sampleOrder)
+                    OrderManager.addOrder(sampleOrder)
                 }
             ) {
                 Text("Add Sample Order")
@@ -92,7 +92,7 @@ fun OrderGUI(){
             // Import from directory button
             Button(
                 onClick = {
-                    orderManager.importOrdersFromDirectory()
+                    OrderManager.importOrdersFromDirectory()
                 }
             ) {
                 Text("Import Orders")
@@ -119,7 +119,7 @@ fun OrderGUI(){
                 modifier = Modifier.weight(1f),
                 actionButton = { order ->
                     Button(
-                        onClick = { orderManager.startOrder(order.orderID) },
+                        onClick = { OrderManager.startOrder(order.orderID) },
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text("Start")
@@ -137,14 +137,14 @@ fun OrderGUI(){
                 actionButton = { order ->
                     Column {
                         Button(
-                            onClick = { orderManager.completeOrder(order.orderID) },
+                            onClick = { OrderManager.completeOrder(order.orderID) },
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             Text("Complete")
                         }
                         Spacer(modifier = Modifier.height(4.dp))
                         OutlinedButton(
-                            onClick = { orderManager.cancelOrder(order.orderID) },
+                            onClick = { OrderManager.cancelOrder(order.orderID) },
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             Text("Cancel")

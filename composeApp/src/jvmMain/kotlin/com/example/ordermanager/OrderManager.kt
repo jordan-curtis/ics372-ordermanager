@@ -3,7 +3,7 @@ package com.example.ordermanager
 import java.io.File
 
 
-class OrderManager : IOrderManager {
+object OrderManager : IOrderManager {
 
     /**
      * This class handles all the orders: incoming, started, and completed
