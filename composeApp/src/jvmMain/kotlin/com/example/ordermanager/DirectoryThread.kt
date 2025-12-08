@@ -35,6 +35,7 @@ object DirectoryThread {
                         for (o in orders) {
                             println(o.orderID);
                         }
+                        OrderManager.addManyOrders(orders);
                     }
                     delay(1.seconds)
 
