@@ -7,7 +7,6 @@ import javax.json.JsonArray
 
 
 object OrderManager : IOrderManager {
-
     /**
      * This class handles all the orders: incoming, started, and completed
      */
@@ -15,7 +14,6 @@ object OrderManager : IOrderManager {
     /**
      * Setting up basic constructors
      */
-
     private val incomingOrders = mutableListOf<Order>()
     private val startedOrders = mutableListOf<Order>()
     private val completedOrders = mutableListOf<Order>()
@@ -23,16 +21,13 @@ object OrderManager : IOrderManager {
 
 
     //Setting up a UI update callback, to ensure anytime a list is changed the UI reflects
-
     var onOrderChange: (() -> Unit)? = null
-
     //Return whatever ya got if ya got something that is not null
 
 
     /**
      * Getters for all the lists
      */
-
     override fun getIncomingOrders(): List<Order> = incomingOrders.toList()
     override fun getStartedOrders(): List<Order> = startedOrders.toList()
     override fun getCompletedOrders(): List<Order> = completedOrders.toList()
@@ -44,7 +39,6 @@ object OrderManager : IOrderManager {
      *
      * Both times calling our UI info update function, onOrderChange
      */
-
     override fun addOrder(order: Order) {
         incomingOrders.add(order)
         onOrderChange?.invoke()
@@ -56,54 +50,6 @@ object OrderManager : IOrderManager {
             onOrderChange?.invoke()
         }
     }
-
-
-    /**
-     * Instantiates the FileHandler class which returns an ArrayList of Orders.
-     * Then adds each of the returned Orders to the incomingOrders ArrayList.
-     * @author Tommy Fenske
-     */
-    fun fileFromJSON() {
-        // TODO: Commented out code since we don't use this function. Should we delete it?
-        //JsonParser jp = new JsonParser();
-        //List<Order> newOrders = jp.jsonParsing();
-        //incomingOrders.addAll(newOrders);
-
-        // Update GUIController after new orders have been added
-    }
-
-    /**
-     * Prints each Order object in incomingOrders ArrayList
-     * @author Tommy Fenske
-     */
-    fun printIncomingOrders() {
-        //Debug Statement
-        //System.out.println("DEBUG: Incoming orders count = " + incomingOrders.size());
-        for (order in incomingOrders) {
-            println(order.toString())
-        }
-    }
-
-    /**
-     * Prints each Order object in startedOrders ArrayList
-     * @author Tommy Fenske
-     */
-    fun printStartedOrders() {
-        for (order in startedOrders) {
-            println(order.toString())
-        }
-    }
-
-    /**
-     * Prints each Order object in completedOrders ArrayList
-     * @author Tommy Fenske
-     */
-    fun printCompletedOrders() {
-        for (order in completedOrders) {
-            println(order.toString())
-        }
-    }
-
 
     /**
      * Searches the incomingOrders List for the orderID,
@@ -188,9 +134,7 @@ object OrderManager : IOrderManager {
         }
 
         //Check on started orders
-
         iterator = startedOrders.iterator()
-
         while (iterator.hasNext()) {
             val order = iterator.next()
             if (order.orderID == cancelOrderId) {
@@ -206,7 +150,6 @@ object OrderManager : IOrderManager {
                 return true
             }
         }
-
         return false
     }
 
@@ -235,7 +178,6 @@ object OrderManager : IOrderManager {
                 return order
             }
         }
-
         return null
     }
 
@@ -261,17 +203,12 @@ object OrderManager : IOrderManager {
         }
 
         val jsonParser = JsonOrderParser()
-
         val xmlParser = XmlOrderParser()
-
         val jsonOrders = jsonParser.parse(directory)
-
         val xmlOrders = xmlParser.parse(directory)
 
         addManyOrders(jsonOrders + xmlOrders)
-
         //Delete the files once processed
-
         directory.listFiles()?.forEach { file ->
             if (file.extension.lowercase() in listOf("json", "xml")) {
                 if (file.delete()) {
@@ -294,14 +231,12 @@ object OrderManager : IOrderManager {
     }
 
 
-
     /**
      * Adding functions for saving the state and loading the state of the
      * program
      * @author Ruben
      * @param file A File that is the current "state file"
      */
-
     fun saveState(file: File = File("data/state.json")) {
 
         val jsonBuilder = StringBuilder()
@@ -314,15 +249,9 @@ object OrderManager : IOrderManager {
         }\n")
         jsonBuilder.append("}")
 
-
-
         //Write to the file
-
         file.writeText(jsonBuilder.toString())
         println("State is now saved to ${file.path}")
-
-
-
     }
 
     fun loadState(file: File = File("data/state.json")) {
@@ -350,15 +279,12 @@ object OrderManager : IOrderManager {
         cancelledOrders.addAll(parseOrderArray(root.getJsonArray("cancelled")))
 
         onOrderChange?.invoke()
-
-
     }
 
     /**
      * I had to write a quick parsing method specific for the loading and
      * saving parts
      */
-
     private fun parseOrderArray(jsonArray: JsonArray): List<Order>{
 
         val orders = mutableListOf<Order>()
@@ -372,9 +298,7 @@ object OrderManager : IOrderManager {
             val status = Order.OrderStatus.valueOf(statusName)
 
             //Parsing the items
-
             val items = mutableListOf<Item>()
-
             val itemsArray = orderObj.getJsonArray("items")
 
             for (j in 0 until itemsArray.size){
@@ -386,11 +310,8 @@ object OrderManager : IOrderManager {
             }
 
             //Now generating the loaded orders into proper data for the program
-
             orders.add(OrderGenerator.orderGenerator(orderType,items,status))
-
         }
-
         return orders
 
     }
@@ -402,26 +323,20 @@ object OrderManager : IOrderManager {
         val cancelled: List<Order>
     )
 
-
     /**Helper functions for orders to json
      * One is for a list of orders
      * The other for a single order
      */
-
     //List of orders
     private fun ordersToJson(orders: List<Order>): String {
         if (orders.isEmpty()) return "[]"
 
         val items = orders.map { order -> singleOrderToJson(order) }
         return "[\n${items.joinToString(",\n")}\n ]"
-
     }
 
     //Single order
-
     private fun singleOrderToJson(order: Order): String {
-
-
         val jsonBuilder = StringBuilder()
         jsonBuilder.append("{\n")
         jsonBuilder.append("\"orderId\": ${order.orderID},\n")
@@ -443,81 +358,5 @@ object OrderManager : IOrderManager {
         jsonBuilder.append("}")
 
         return jsonBuilder.toString()
-
-
     }
 }
-
-
-
-
-/* commenting out for now, the Kotlin refactoring allows for a different use, where we can call the
-
-/**
- * Sets the value of the pollDirectory boolean, starting or stopping polling of the data directory.
- * @param isPolling determines if Thread should poll directory.
- */
-fun toggleWatcher(isPolling: Boolean) {
-    ordersystem.OrderManager.Companion.pollDirectory = isPolling
-}
-
-companion object {
-    private var guiController: GUIController? = null
-    private var pollDirectory = true
-
-
-
-    /**
-     * Called in the GUIController's start() function.
-     * Creates a new thread that sleeps for 1000ms, before calling the FileImporterFacade to parse any files
-     * in the data directory. Files are then deleted to prevent duplication.
-     * @author Tommy Fenske
-     */
-    fun setupWatcher() {
-        val t = Thread(Runnable {
-            val dataDir = File("data")
-            if (!dataDir.exists()) {
-                dataDir.mkdir()
-            }
-            while (ordersystem.OrderManager.Companion.pollDirectory) {
-                try {
-                    //System.out.println("Sleep");
-                    Thread.sleep(1000)
-                } catch (e: InterruptedException) {
-                    throw RuntimeException(e)
-                }
-                Platform.runLater({
-                    if (dataDir.list().size <= 0) return@runLater
-                    // Setup FileImporterFacade
-                    val facade: FileImporterFacade = FileImporterFacade()
-                    // Get parsed orders from importer
-                    val incoming: MutableList<Order?> = facade.fileImport()
-
-                    // If new orders need to be added
-                    if (!incoming.isEmpty()) {
-                        // Add parsed orders to the incomingOrders ArrayList, then update GUI
-                        ordersystem.OrderManager.Companion.incomingOrders.addAll(incoming)
-                        ordersystem.OrderManager.Companion.guiController.updateGUIOrders()
-                    }
-
-                    // Delete each file so it isn't parsed again
-                    for (s in dataDir.list()) {
-                        // Get reference to individual file
-                        val currentFile = File(dataDir.getPath() + "/" + s)
-                        // Delete file
-                        if (currentFile.delete()) {
-                            println("Deleted the file: " + currentFile.getName())
-                        } else {
-                            println("Failed to delete the file: " + currentFile.getName())
-                        }
-                    }
-                })
-            }
-        })
-        t.setName("Polling Thread")
-        t.start()
-    }
-}
-}
-}
- */
