@@ -52,9 +52,1549 @@
 {"name": "Salad", "price": 5.75, "quantity": 2},
 {"name": "Soda", "price": 1.99, "quantity": 1}
 ]
+},
+{
+"orderId": 6,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 7,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 8,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 9,
+"orderType": "DELIVERY",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 10,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 11,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 12,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 13,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 14,
+"orderType": "DELIVERY",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 15,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 16,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 17,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 18,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 19,
+"orderType": "DELIVERY",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 20,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 21,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 22,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 23,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 24,
+"orderType": "DELIVERY",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 25,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 26,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 27,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 28,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 29,
+"orderType": "DELIVERY",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 30,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 31,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 32,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 33,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 34,
+"orderType": "DELIVERY",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 35,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 36,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 37,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 38,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 39,
+"orderType": "DELIVERY",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 40,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 41,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 42,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 43,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 44,
+"orderType": "DELIVERY",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 45,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 46,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 47,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 48,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 49,
+"orderType": "DELIVERY",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 50,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 51,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 52,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 53,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 54,
+"orderType": "DELIVERY",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 55,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 56,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 57,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 58,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 59,
+"orderType": "DELIVERY",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 60,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 61,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 62,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 63,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 64,
+"orderType": "DELIVERY",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 65,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 66,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 67,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 68,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 69,
+"orderType": "DELIVERY",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 70,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 71,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 72,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 73,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 74,
+"orderType": "DELIVERY",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 75,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 76,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 77,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 78,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 79,
+"orderType": "DELIVERY",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 80,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 81,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 82,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 83,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 84,
+"orderType": "DELIVERY",
+"status": "INCOMING",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 85,
+"orderType": "PICKUP",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
 }
  ],
-"started": [],
-"completed": [],
-"cancelled": []
+"started": [
+{
+"orderId": 86,
+"orderType": "PICKUP",
+"status": "STARTED",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 87,
+"orderType": "TOGO",
+"status": "STARTED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 88,
+"orderType": "PICKUP",
+"status": "STARTED",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 89,
+"orderType": "TOGO",
+"status": "STARTED",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 90,
+"orderType": "DELIVERY",
+"status": "STARTED",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 91,
+"orderType": "PICKUP",
+"status": "STARTED",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 92,
+"orderType": "TOGO",
+"status": "STARTED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 93,
+"orderType": "PICKUP",
+"status": "STARTED",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 94,
+"orderType": "TOGO",
+"status": "STARTED",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 95,
+"orderType": "DELIVERY",
+"status": "STARTED",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 96,
+"orderType": "PICKUP",
+"status": "STARTED",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+}
+ ],
+"completed": [
+{
+"orderId": 97,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 98,
+"orderType": "PICKUP",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 99,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 100,
+"orderType": "DELIVERY",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 101,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 102,
+"orderType": "PICKUP",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 103,
+"orderType": "PICKUP",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 104,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 105,
+"orderType": "DELIVERY",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 106,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 107,
+"orderType": "DELIVERY",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 108,
+"orderType": "PICKUP",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 109,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 110,
+"orderType": "DELIVERY",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 111,
+"orderType": "PICKUP",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 112,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 113,
+"orderType": "PICKUP",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 114,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 115,
+"orderType": "PICKUP",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 116,
+"orderType": "PICKUP",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 117,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 118,
+"orderType": "DELIVERY",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 119,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 120,
+"orderType": "PICKUP",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 121,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 122,
+"orderType": "DELIVERY",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 123,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 124,
+"orderType": "PICKUP",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 125,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 126,
+"orderType": "DELIVERY",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 127,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 128,
+"orderType": "PICKUP",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 129,
+"orderType": "DELIVERY",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 130,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 131,
+"orderType": "PICKUP",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 132,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 133,
+"orderType": "DELIVERY",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 134,
+"orderType": "PICKUP",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 135,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 136,
+"orderType": "PICKUP",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 137,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 138,
+"orderType": "DELIVERY",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+},
+{
+"orderId": 139,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 140,
+"orderType": "PICKUP",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 5.99, "quantity": 2},
+{"name": "Soda", "price": 1.49, "quantity": 4},
+{"name": "Soup", "price": 4.95, "quantity": 2}
+]
+},
+{
+"orderId": 141,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 142,
+"orderType": "DELIVERY",
+"status": "COMPLETED",
+"items": [
+{"name": "Salad", "price": 10.95, "quantity": 2},
+{"name": "Burger", "price": 12.95, "quantity": 1},
+{"name": "Fries", "price": 5.25, "quantity": 3},
+{"name": "Shake", "price": 8.99, "quantity": 3},
+{"name": "Soda", "price": 2.99, "quantity": 1}
+]
+}
+ ],
+"cancelled": [
+{
+"orderId": 143,
+"orderType": "PICKUP",
+"status": "CANCELLED",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 144,
+"orderType": "TOGO",
+"status": "CANCELLED",
+"items": [
+{"name": "Sandwich", "price": 5.99, "quantity": 2},
+{"name": "Fries", "price": 3.95, "quantity": 2},
+{"name": "Soda", "price": 2.25, "quantity": 2},
+{"name": "Shake", "price": 6.25, "quantity": 2}
+]
+},
+{
+"orderId": 145,
+"orderType": "TOGO",
+"status": "CANCELLED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 8.95, "quantity": 1}
+]
+},
+{
+"orderId": 146,
+"orderType": "PICKUP",
+"status": "CANCELLED",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 147,
+"orderType": "PICKUP",
+"status": "CANCELLED",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 148,
+"orderType": "PICKUP",
+"status": "CANCELLED",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 149,
+"orderType": "PICKUP",
+"status": "CANCELLED",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+},
+{
+"orderId": 150,
+"orderType": "PICKUP",
+"status": "CANCELLED",
+"items": [
+{"name": "Burger", "price": 11.5, "quantity": 1},
+{"name": "Salad", "price": 5.75, "quantity": 2},
+{"name": "Soda", "price": 1.99, "quantity": 1}
+]
+}
+ ]
 }

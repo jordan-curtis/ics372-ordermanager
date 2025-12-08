@@ -381,9 +381,9 @@ fun chartDisplay(orders : List<Order>){
 
     if(profitChartImage != null && quantityChartImage != null){
         Image(bitmap = profitChartImage!!, contentDescription = "Profit " +
-                "Stats", modifier = Modifier.fillMaxWidth().height(350.dp));
+                "Stats", modifier = Modifier.fillMaxWidth().height(400.dp));
         Image(bitmap = quantityChartImage!!, contentDescription = "Profit " +
-                "Stats", modifier = Modifier.fillMaxWidth().height(350.dp));
+                "Stats", modifier = Modifier.fillMaxWidth().height(400.dp));
     }
 }
 
