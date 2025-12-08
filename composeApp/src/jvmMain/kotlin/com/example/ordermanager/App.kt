@@ -57,10 +57,6 @@ fun App() {
     fun quickDemo() {
 
 
-            // Testing chart making functions - Tommy
-        val c: Calculator = Calculator();
-        c.chartTest();
-
         val sampleOrder = remember {
             OrderGenerator.orderGenerator(
                 "TOGO", mutableListOf(
