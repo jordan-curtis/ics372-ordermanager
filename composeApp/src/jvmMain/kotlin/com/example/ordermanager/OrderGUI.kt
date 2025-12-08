@@ -345,10 +345,10 @@ fun OrderAnalytics(completedOrders: List<Order>, onDismiss: () -> Unit){
 
     Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)){
         Card(
-            modifier = Modifier.width(600.dp).height(500.dp).padding(16.dp),colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+            modifier = Modifier.width(700.dp).height(550.dp).padding(16.dp),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
         )
-        {
-            Column(modifier = Modifier.fillMaxSize().padding(24.dp)){
+        { Column(modifier = Modifier.fillMaxSize().padding(16.dp)){
 
                 //Adding a header for the button title and the close button
 

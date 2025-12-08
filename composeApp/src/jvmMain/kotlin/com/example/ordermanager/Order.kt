@@ -9,7 +9,12 @@ import java.time.LocalDateTime
  *
  * @author Jordan Curtis
  */
-abstract class Order(val items: List<Item>, initialStatus: OrderStatus = OrderStatus.INCOMING) {
+
+//Passing the order status to the constructor for easier save/load state
+// functionality
+
+abstract class Order(val items: List<Item>, initialStatus: OrderStatus =
+    OrderStatus.INCOMING) {
     enum class OrderStatus { INCOMING, STARTED, COMPLETED, CANCELLED }
     enum class OrderType { TOGO, PICKUP, DELIVERY }
 
@@ -34,7 +39,8 @@ abstract class Order(val items: List<Item>, initialStatus: OrderStatus = OrderSt
     abstract fun completeOrder()
 
     fun cancelOrder() {
-        check(status != OrderStatus.COMPLETED || status != OrderStatus.CANCELLED) {
+        check(status != OrderStatus.COMPLETED && status != OrderStatus .
+                CANCELLED) {
             "Order has already been completed or cancelled."
         }
 
@@ -42,14 +48,20 @@ abstract class Order(val items: List<Item>, initialStatus: OrderStatus = OrderSt
         status = OrderStatus.CANCELLED
     }
 
+    override fun toString(): String {
+        return "Order Type: $orderType\nOrder Status: $status"
+    }
 }
+
 
 /**
  * To-Go Orders have added functionality for tracking the order's readiness.
  *
  * @author Jordan Curtis
  */
-class TogoOrder(items: List<Item>, var togoStatus: TogoStatus = TogoStatus.PREPARING) : Order(items) {
+class TogoOrder(items: List<Item>, initialStatus: OrderStatus = OrderStatus
+    .INCOMING, var togoStatus: TogoStatus = TogoStatus
+    .PREPARING) : Order(items, initialStatus) {
     enum class TogoStatus { PREPARING, READY }
     override val orderType: String = OrderType.TOGO.name
 
@@ -73,7 +85,9 @@ class TogoOrder(items: List<Item>, var togoStatus: TogoStatus = TogoStatus.PREPA
  *
  * @author
  */
-class PickupOrder(items: List<Item>, var pickupStatus: PickupStatus = PickupStatus.PREPARING) : Order(items) {
+class PickupOrder(items: List<Item>,initialStatus: OrderStatus = OrderStatus
+    .INCOMING, var pickupStatus: PickupStatus =
+    PickupStatus.PREPARING) : Order(items, initialStatus) {
     enum class PickupStatus { PREPARING, READY }
 
     override val orderType: String = OrderType.PICKUP.name
@@ -98,8 +112,11 @@ class PickupOrder(items: List<Item>, var pickupStatus: PickupStatus = PickupStat
  *
  * @author Jordan Curtis
  */
-class DeliveryOrder(items: List<Item>, var deliveryStatus: DeliveryStatus = DeliveryStatus.PREPARING) : Order(items) {
+class DeliveryOrder(items: List<Item>, initialStatus: OrderStatus = OrderStatus
+    .INCOMING, var deliveryStatus: DeliveryStatus =
+    DeliveryStatus.PREPARING) : Order(items, initialStatus) {
     enum class DeliveryStatus { PREPARING, DELIVERING, ARRIVED }
+
     override val orderType: String = OrderType.DELIVERY.name
 
     // Allows for the ability to have a departure time for the delivery.
@@ -127,7 +144,8 @@ class DeliveryOrder(items: List<Item>, var deliveryStatus: DeliveryStatus = Deli
 
     override fun toString(): String {
         return "Order Type: $orderType\nOrder Status: $status\nDelivery Status: $deliveryStatus"
+        }
     }
-}
+
 
 class InvalidOrderStatusChange(message: String) : Exception(message)

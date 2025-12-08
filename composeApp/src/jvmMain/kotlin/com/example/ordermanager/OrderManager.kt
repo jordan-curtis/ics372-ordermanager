@@ -1,6 +1,9 @@
 package com.example.ordermanager
 
 import java.io.File
+import java.io.FileReader
+import javax.json.Json
+import javax.json.JsonArray
 
 
 object OrderManager : IOrderManager {
@@ -288,6 +291,160 @@ object OrderManager : IOrderManager {
         val cancelled: Int
     ) {
         val total: Int get() = incoming + started + completed + cancelled
+    }
+
+
+
+    /**
+     * Adding functions for saving the state and loading the state of the
+     * program
+     * @author Ruben
+     * @param file A File that is the current "state file"
+     */
+
+    fun saveState(file: File = File("data/state.json")) {
+
+        val jsonBuilder = StringBuilder()
+        jsonBuilder.append("{\n")
+        jsonBuilder.append("\"incoming\": ${ordersToJson((incomingOrders))},\n")
+        jsonBuilder.append("\"started\": ${ordersToJson((startedOrders))
+        },\n")
+        jsonBuilder.append("\"completed\": ${ordersToJson((completedOrders))},\n")
+        jsonBuilder.append("\"cancelled\": ${ordersToJson((cancelledOrders))
+        }\n")
+        jsonBuilder.append("}")
+
+
+
+        //Write to the file
+
+        file.writeText(jsonBuilder.toString())
+        println("State is now saved to ${file.path}")
+
+
+
+    }
+
+    fun loadState(file: File = File("data/state.json")) {
+
+        //If no file just return
+
+        if(!file.exists()) return
+
+        //Read and parse the file
+
+        val reader = Json.createReader(FileReader(file))
+
+        val root = reader.readObject()
+
+        reader.close()
+
+        incomingOrders.clear()
+        startedOrders.clear()
+        completedOrders.clear()
+        cancelledOrders.clear()
+
+        incomingOrders.addAll(parseOrderArray(root.getJsonArray("incoming")))
+        startedOrders.addAll(parseOrderArray(root.getJsonArray("started")))
+        completedOrders.addAll(parseOrderArray(root.getJsonArray("completed")))
+        cancelledOrders.addAll(parseOrderArray(root.getJsonArray("cancelled")))
+
+        onOrderChange?.invoke()
+
+
+    }
+
+    /**
+     * I had to write a quick parsing method specific for the loading and
+     * saving parts
+     */
+
+    private fun parseOrderArray(jsonArray: JsonArray): List<Order>{
+
+        val orders = mutableListOf<Order>()
+
+        for(i in 0 until jsonArray.size){
+
+            val orderObj = jsonArray.getJsonObject(i)
+
+            val orderType = orderObj.getString("orderType")
+            val statusName = orderObj.getString("status")
+            val status = Order.OrderStatus.valueOf(statusName)
+
+            //Parsing the items
+
+            val items = mutableListOf<Item>()
+
+            val itemsArray = orderObj.getJsonArray("items")
+
+            for (j in 0 until itemsArray.size){
+                val itemObj = itemsArray.getJsonObject(j)
+                items.add(Item(itemObj.getString("name"),itemObj.getJsonNumber
+                    ("price").doubleValue(),
+                    itemObj.getInt("quantity")
+                    ))
+            }
+
+            //Now generating the loaded orders into proper data for the program
+
+            orders.add(OrderGenerator.orderGenerator(orderType,items,status))
+
+        }
+
+        return orders
+
+    }
+
+    data class StateData(
+        val incoming: List<Order>,
+        val started: List<Order>,
+        val completed: List<Order>,
+        val cancelled: List<Order>
+    )
+
+
+    /**Helper functions for orders to json
+     * One is for a list of orders
+     * The other for a single order
+     */
+
+    //List of orders
+    private fun ordersToJson(orders: List<Order>): String {
+        if (orders.isEmpty()) return "[]"
+
+        val items = orders.map { order -> singleOrderToJson(order) }
+        return "[\n${items.joinToString(",\n")}\n ]"
+
+    }
+
+    //Single order
+
+    private fun singleOrderToJson(order: Order): String {
+
+
+        val jsonBuilder = StringBuilder()
+        jsonBuilder.append("{\n")
+        jsonBuilder.append("\"orderId\": ${order.orderID},\n")
+        jsonBuilder.append("\"orderType\": \"${order.orderType}\",\n")
+        jsonBuilder.append("\"status\": \"${order.status}\",\n")
+        jsonBuilder.append("\"items\": [\n")
+
+        //Looping through multiples items or multiples of same item
+
+        order.items.forEachIndexed { index, item ->
+            jsonBuilder.append("{\"name\": \"${item.name}\", \"price\": ${item.price}, " +
+                    "\"quantity\": ${item.quantity}}")
+
+            if (index < order.items.size - 1) jsonBuilder.append(",")
+            jsonBuilder.append("\n")
+
+        }
+        jsonBuilder.append("]\n")
+        jsonBuilder.append("}")
+
+        return jsonBuilder.toString()
+
+
     }
 }
 

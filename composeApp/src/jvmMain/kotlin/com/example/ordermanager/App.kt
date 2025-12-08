@@ -83,7 +83,7 @@ fun App() {
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
-            Card(modifier = Modifier.fillMaxWidth()) {
+            Card(modifier = Modifier.size(width = 200.dp, height = 200.dp)) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text("Order #${sampleOrder.orderID}", fontSize = 20.sp, fontWeight = FontWeight.Bold)
                     Text("Type: ${sampleOrder.orderType}")

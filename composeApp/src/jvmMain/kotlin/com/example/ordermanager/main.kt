@@ -11,15 +11,29 @@ import java.io.File
 import java.io.FileFilter
 
 fun main() = application {
+
+    //Load any previous saved data on startup
+
+    val stateFile = File("data/state.json")
+    if(stateFile.exists()){
+        OrderManager.loadState(stateFile)
+        println("Loaded previous save data")
+    }
+
     DirectoryThread.runThread();
 
-    val screenState = rememberWindowState(size = DpSize(1000.dp, 700.dp),
+    val screenState = rememberWindowState(size = DpSize(1200.dp, 800.dp),
         position = WindowPosition(300.dp, 300.dp))
 
 
     Window(
         title = "Order System App",
-        onCloseRequest = ::exitApplication,
+        onCloseRequest = {
+            //Now saves before closing
+            OrderManager.saveState(stateFile)
+            println("Saved your file before exiting")
+            exitApplication()
+        },
         state = screenState,
         alwaysOnTop = true
     ) {

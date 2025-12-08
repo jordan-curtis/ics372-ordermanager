@@ -1,0 +1,78 @@
+{
+"incoming": [
+{
+"orderId": 1,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 5.99, "quantity": 1}
+]
+},
+{
+"orderId": 2,
+"orderType": "TOGO",
+"status": "INCOMING",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 5.99, "quantity": 1}
+]
+}
+ ],
+"started": [],
+"completed": [
+{
+"orderId": 3,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 5.99, "quantity": 1}
+]
+},
+{
+"orderId": 4,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 5.99, "quantity": 1}
+]
+},
+{
+"orderId": 5,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 5.99, "quantity": 1}
+]
+},
+{
+"orderId": 6,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 5.99, "quantity": 1}
+]
+},
+{
+"orderId": 7,
+"orderType": "TOGO",
+"status": "COMPLETED",
+"items": [
+{"name": "Burger", "price": 8.99, "quantity": 1},
+{"name": "Fries", "price": 3.99, "quantity": 2},
+{"name": "Shake", "price": 5.99, "quantity": 1}
+]
+}
+ ],
+"cancelled": []
+}
