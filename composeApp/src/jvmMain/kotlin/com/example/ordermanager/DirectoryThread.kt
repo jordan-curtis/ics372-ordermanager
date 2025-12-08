@@ -38,8 +38,3 @@ object DirectoryThread {
         }
     }
 }
-
-suspend fun greet() {
-    println("The greet() on the thread: ${Thread.currentThread().name}");
-    delay(1.seconds);
-}
