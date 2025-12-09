@@ -130,7 +130,7 @@ fun OrderGUI(){
 
             Button(
                 onClick = {
-
+                    OrderManager.saveState(File("data/state.json"));
                     kotlin.system.exitProcess(0)
 
                 },
