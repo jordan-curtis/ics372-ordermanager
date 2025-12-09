@@ -78,89 +78,80 @@ fun OrderGUI(){
 
         Row(modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)){
 
-            //Add sample order button
-
-            //Refactored into test directory button
-
-
-            //Adding actual import functionality
-            //Setting initial directory to testFiles
+            // Open data directory button
             Button(
                 onClick = {
-                    // Set the initial directory to "testFiles"
-                    val initialDir = File("../testFiles")
-                    val fileDialog = FileDialog(Frame(), "Select Test Orders Directory", FileDialog.LOAD)
-
-                    if (initialDir.exists() && initialDir.isDirectory) {
-                        fileDialog.directory = initialDir.absolutePath
+                    val dataDir = File("data")
+                    if (!dataDir.exists()) {
+                        dataDir.mkdirs()
                     }
-                    fileDialog.isMultipleMode = true
 
-                    fileDialog.isVisible = true
+                    try {
+                        java.awt.Desktop.getDesktop().open(dataDir)
+                        println("Opened: ${dataDir.absolutePath}")
+                    } catch (e: Exception) {
+                        println("Error: ${e.message}")
+                    }
+                }
+            ) {
+                Text("Open Data Folder")
+            }
 
-                    val selectedPath = fileDialog.directory
-                    if (selectedPath != null) {
-                        val selectedDir = File(selectedPath)
+            // Open testFiles directory button
+            Button(
+                onClick = {
+                    val possiblePaths = listOf(
+                        File("testFiles"),
+                        File("../testFiles"),
+                        File("../../testFiles")
+                    )
 
-                        // Only JSON or XML files
-                        val validFiles = selectedDir.listFiles { file ->
-                            file.extension.lowercase() in listOf("json", "xml")
-                        } ?: emptyArray()
+                    val testDir = possiblePaths.firstOrNull { it.exists() && it.isDirectory }
 
-                        // Import orders from each valid file's directory
-                        validFiles.forEach { file ->
-                            OrderManager.importOrdersFromDirectory(file
-                                .parentFile, deleteFiles = false)
+                    if (testDir != null) {
+                        try {
+                            java.awt.Desktop.getDesktop().open(testDir)
+                            println("Opened: ${testDir.absolutePath}")
+                        } catch (e: Exception) {
+                            println("Error: ${e.message}")
                         }
                     } else {
-                        println("No directory selected!")
+                        println("testFiles directory not found")
                     }
                 }
             ) {
-                Text("Load Test Orders")
+                Text("Open Test Files")
             }
-
-            // Import from directory button
-            Button(
-                onClick = {
-                    //Adding actual import functionality
-                    val fileDialog = FileDialog(Frame(), "Select Your Order " +
-                            "Directory", FileDialog.LOAD)
-
-                    fileDialog.isMultipleMode = true
-
-                    fileDialog.isVisible = true
-
-                    val selectedPath = fileDialog.directory
-                    if(selectedPath != null){
-
-                        val selectedDir = File(selectedPath)
-
-                        //Only JSON or XML files
-
-                        val validFiles = selectedDir.listFiles { file ->
-                            file.extension.lowercase() in listOf("json", "xml")
-                        } ?: emptyArray()
-
-                        //Import the actual orders now
-                        validFiles.forEach{ file -> OrderManager
-                            .importOrdersFromDirectory(file.parentFile,
-                                deleteFiles = false)}
-                    }
-                }
-            ) {
-                Text("Open Directory")
-            }
-
 
             Spacer(modifier = Modifier.weight(1f))
 
-            //Analytics Button, for a new pop up of analytics
+            // Reset session button
+            Button(
+                onClick = {
+                    OrderManager.clearAllOrders()
 
-            Button(onClick = {showAnalytics = true}, colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)){
-                Text("Click to view analytics")
+                    val stateFile = File("data/state.json")
+                    if (stateFile.exists()) {
+                        stateFile.delete()
+                        println("Session reset")
+                    }
+                },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.error
+                )
+            ) {
+                Text("Reset Session")
             }
 
+            // Analytics button
+            Button(
+                onClick = { showAnalytics = true },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.secondary
+                )
+            ) {
+                Text("View Analytics")
+            }
         }
 
         // Three columns, our main section of our UI
@@ -215,9 +206,9 @@ fun OrderGUI(){
                 orders = completedOrders,
                 modifier = Modifier.weight(1f),
                 actionButton = null // No actions for completed orders
-                    )
-            }
+            )
         }
+    }
 
     // Analytics popup dialog
     if (showAnalytics) {
@@ -227,7 +218,7 @@ fun OrderGUI(){
         )
     }
 
-    }
+}
 
 /**
  * This is for the content of a column itself, implement each column as needed
@@ -279,18 +270,18 @@ fun OrderCard(order: Order, actionButton: (@Composable (Order) -> Unit)? = null)
 
             //For order ID
             Text(
-                text = "Order: #${order.orderID}", fontWeight = FontWeight.Bold, fontSize =  16.sp
+                text = "Order: #${order.orderID}", fontWeight = FontWeight.Bold, fontSize = 16.sp
             )
 
             //For order type
             Text(
-                text = "Type: #${order.orderType}", fontWeight = FontWeight.Bold, fontSize =  16.sp, color = MaterialTheme.colorScheme.onSurfaceVariant
+                text = "Type: #${order.orderType}", fontWeight = FontWeight.Bold, fontSize = 16.sp, color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
 
             //For order status
             Text(
-                text = "Status: #${order.status}", fontWeight = FontWeight.Bold, fontSize =  16.sp, color = MaterialTheme.colorScheme.onSurfaceVariant
+                text = "Status: #${order.status}", fontWeight = FontWeight.Bold, fontSize = 16.sp, color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
 
@@ -353,25 +344,25 @@ fun chartDisplay(orders : List<Order>){
             /*
             //This WILL create a file from the current running application but will default to our test file
             if(orders.isNotEmpty()){
-                calculator.createProfitChart(orders)
-                val chartFile = File("Output-chart.png")
-                if(chartFile.exists()){
-                    //Png to bitmap
-                    val chartBytes = chartFile.readBytes()
-                    chartImage = org.jetbrains.skia.Image.makeFromEncoded(chartBytes).toComposeImageBitmap()
-                }
+            calculator.createProfitChart(orders)
+            val chartFile = File("Output-chart.png")
+            if(chartFile.exists()){
+            //Png to bitmap
+            val chartBytes = chartFile.readBytes()
+            chartImage = org.jetbrains.skia.Image.makeFromEncoded(chartBytes).toComposeImageBitmap()
+            }
             }
             else {
-                //Use our test chart if no orders exist
-                calculator.chartTest()
-                val chartFile = File("chart.png")
-                if(chartFile.exists()){
-                    //Png to bitmap
-                    val chartBytes = chartFile.readBytes()
-                    chartImage = org.jetbrains.skia.Image.makeFromEncoded(chartBytes).toComposeImageBitmap()
-                }
+            //Use our test chart if no orders exist
+            calculator.chartTest()
+            val chartFile = File("chart.png")
+            if(chartFile.exists()){
+            //Png to bitmap
+            val chartBytes = chartFile.readBytes()
+            chartImage = org.jetbrains.skia.Image.makeFromEncoded(chartBytes).toComposeImageBitmap()
             }
-             */
+            }
+            */
         }){
             Text("Generate Charts from Sales Data")
         }
@@ -405,7 +396,7 @@ fun OrderAnalytics(completedOrders: List<Order>, onDismiss: () -> Unit) {
         Card(
             modifier = Modifier.fillMaxWidth(0.95f).fillMaxHeight(0.95f)
                 .padding(12
-                .dp),
+                    .dp),
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
         )
         {
@@ -507,31 +498,32 @@ fun OrderAnalytics(completedOrders: List<Order>, onDismiss: () -> Unit) {
 
 
 
-        /**
-         * Small stat card for analytics makes it very easy to just slap the data
-         * in here and call it inside of the analytics section
-         */
-        @Composable
-        fun StatCard(label: String, value: String) {
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer
-                )
-            ) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Text(
-                        text = label,
-                        fontSize = 14.sp,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer
-                    )
-                    Text(
-                        text = value,
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer
-                    )
-                }
-            }
+/**
+ * Small stat card for analytics makes it very easy to just slap the data
+ * in here and call it inside of the analytics section
+ */
+@Composable
+fun StatCard(label: String, value: String) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer
+        )
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(
+                text = label,
+                fontSize = 14.sp,
+                color = MaterialTheme.colorScheme.onPrimaryContainer
+            )
+            Text(
+                text = value,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onPrimaryContainer
+            )
         }
+    }
+}
+
 
