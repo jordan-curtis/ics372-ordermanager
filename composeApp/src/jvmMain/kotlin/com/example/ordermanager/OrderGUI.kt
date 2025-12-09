@@ -125,6 +125,22 @@ fun OrderGUI(){
             Text("Copy Test Files to Data Directory")
             Spacer(modifier = Modifier.weight(1f))
 
+
+            // Exit program button
+
+            Button(
+                onClick = {
+
+                    kotlin.system.exitProcess(0)
+
+                },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.error
+                )
+            ) {
+                Text("Exit")
+            }
+
             // Analytics button
             Button(
                 onClick = { showAnalytics = true },
