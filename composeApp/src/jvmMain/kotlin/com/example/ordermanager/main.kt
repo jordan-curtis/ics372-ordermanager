@@ -29,19 +29,12 @@ fun main() = application {
             //Now saves before closing
             OrderManager.saveState(stateFile)
             println("Saved your file before exiting")
+            DirectoryThread.shouldRun = false;
             exitApplication()
         },
         state = screenState,
         alwaysOnTop = false
     ) {
         App()
-    }
-
-    // Stop directory polling before app is closed
-    DisposableEffect(Unit) {
-        onDispose {
-            // Code to run on app close
-            DirectoryThread.shouldRun = false;
-        }
     }
 }

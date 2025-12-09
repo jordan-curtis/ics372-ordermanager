@@ -122,24 +122,8 @@ fun OrderGUI(){
             ) {
                 Text("Open Test Files")
             }
-
+            Text("Copy Test Files to Data Directory")
             Spacer(modifier = Modifier.weight(1f))
-
-            // Exit program button
-
-            Button(
-                onClick = {
-                    OrderManager.clearAllOrders()
-
-                        println("Exit Program")
-
-                },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.error
-                )
-            ) {
-                Text("Exit")
-            }
 
             // Analytics button
             Button(

@@ -15,7 +15,6 @@ object OrderManager : IOrderManager {
     /**
      * Setting up basic constructors
      */
-
     private val incomingOrders = mutableListOf<Order>()
     private val startedOrders = mutableListOf<Order>()
     private val completedOrders = mutableListOf<Order>()
@@ -23,16 +22,12 @@ object OrderManager : IOrderManager {
 
 
     //Setting up a UI update callback, to ensure anytime a list is changed the UI reflects
-
     var onOrderChange: (() -> Unit)? = null
-
     //Return whatever ya got if ya got something that is not null
-
 
     /**
      * Getters for all the lists
      */
-
     override fun getIncomingOrders(): List<Order> = incomingOrders.toList()
     override fun getStartedOrders(): List<Order> = startedOrders.toList()
     override fun getCompletedOrders(): List<Order> = completedOrders.toList()
@@ -247,67 +242,12 @@ object OrderManager : IOrderManager {
         TODO("Not yet implemented")
     }
 
-
-    /**
-     * Now imports orders from Json and XML files in a directory, using the parsers.kt
-     * @param directory - The directory you want to scan for order files
-     * @author Ruben Vallejo
-     */
-    fun importOrdersFromDirectory(directory: File = File("data"),
-                                  deleteFiles: Boolean = true) {
-
-        if (!directory.exists()) {
-            directory.mkdir()
-            return
-        }
-
-        val jsonParser = JsonOrderParser()
-
-        val xmlParser = XmlOrderParser()
-
-        val jsonOrders = jsonParser.parse(directory)
-
-        val xmlOrders = xmlParser.parse(directory)
-
-        addManyOrders(jsonOrders + xmlOrders)
-
-        //Delete the files once processed
-
-        //Only delete if requested
-
-        if(deleteFiles){
-
-        directory.listFiles()?.forEach { file ->
-            if (file.extension.lowercase() in listOf("json", "xml")) {
-                if (file.delete()) {
-                    println("Now deleted ${file.name}")
-                }
-            }
-            }
-        }
-    }
-
-    /**
-     * Data class holding order statistics
-     */
-    data class OrderStats(
-        val incoming: Int,
-        val started: Int,
-        val completed: Int,
-        val cancelled: Int
-    ) {
-        val total: Int get() = incoming + started + completed + cancelled
-    }
-
-
-
     /**
      * Adding functions for saving the state and loading the state of the
      * program
      * @author Ruben
      * @param file A File that is the current "state file"
      */
-
     fun saveState(file: File = File("data/state.json")) {
 
         val jsonBuilder = StringBuilder()
@@ -320,15 +260,10 @@ object OrderManager : IOrderManager {
         }\n")
         jsonBuilder.append("}")
 
-
-
         //Write to the file
 
         file.writeText(jsonBuilder.toString())
         println("State is now saved to ${file.path}")
-
-
-
     }
 
     fun loadState(file: File = File("data/state.json")) {
@@ -357,14 +292,12 @@ object OrderManager : IOrderManager {
 
         onOrderChange?.invoke()
 
-
     }
 
     /**
      * I had to write a quick parsing method specific for the loading and
      * saving parts
      */
-
     private fun parseOrderArray(jsonArray: JsonArray): List<Order>{
 
         val orders = mutableListOf<Order>()
@@ -413,7 +346,6 @@ object OrderManager : IOrderManager {
      * One is for a list of orders
      * The other for a single order
      */
-
     //List of orders
     private fun ordersToJson(orders: List<Order>): String {
         if (orders.isEmpty()) return "[]"
@@ -424,7 +356,6 @@ object OrderManager : IOrderManager {
     }
 
     //Single order
-
     private fun singleOrderToJson(order: Order): String {
 
 
@@ -453,77 +384,3 @@ object OrderManager : IOrderManager {
 
     }
 }
-
-
-
-
-/* commenting out for now, the Kotlin refactoring allows for a different use, where we can call the
-
-/**
- * Sets the value of the pollDirectory boolean, starting or stopping polling of the data directory.
- * @param isPolling determines if Thread should poll directory.
- */
-fun toggleWatcher(isPolling: Boolean) {
-    ordersystem.OrderManager.Companion.pollDirectory = isPolling
-}
-
-companion object {
-    private var guiController: GUIController? = null
-    private var pollDirectory = true
-
-
-
-    /**
-     * Called in the GUIController's start() function.
-     * Creates a new thread that sleeps for 1000ms, before calling the FileImporterFacade to parse any files
-     * in the data directory. Files are then deleted to prevent duplication.
-     * @author Tommy Fenske
-     */
-    fun setupWatcher() {
-        val t = Thread(Runnable {
-            val dataDir = File("data")
-            if (!dataDir.exists()) {
-                dataDir.mkdir()
-            }
-            while (ordersystem.OrderManager.Companion.pollDirectory) {
-                try {
-                    //System.out.println("Sleep");
-                    Thread.sleep(1000)
-                } catch (e: InterruptedException) {
-                    throw RuntimeException(e)
-                }
-                Platform.runLater({
-                    if (dataDir.list().size <= 0) return@runLater
-                    // Setup FileImporterFacade
-                    val facade: FileImporterFacade = FileImporterFacade()
-                    // Get parsed orders from importer
-                    val incoming: MutableList<Order?> = facade.fileImport()
-
-                    // If new orders need to be added
-                    if (!incoming.isEmpty()) {
-                        // Add parsed orders to the incomingOrders ArrayList, then update GUI
-                        ordersystem.OrderManager.Companion.incomingOrders.addAll(incoming)
-                        ordersystem.OrderManager.Companion.guiController.updateGUIOrders()
-                    }
-
-                    // Delete each file so it isn't parsed again
-                    for (s in dataDir.list()) {
-                        // Get reference to individual file
-                        val currentFile = File(dataDir.getPath() + "/" + s)
-                        // Delete file
-                        if (currentFile.delete()) {
-                            println("Deleted the file: " + currentFile.getName())
-                        } else {
-                            println("Failed to delete the file: " + currentFile.getName())
-                        }
-                    }
-                })
-            }
-        })
-        t.setName("Polling Thread")
-        t.start()
-    }
-}
-}
-}
- */
