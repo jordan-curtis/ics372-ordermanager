@@ -125,22 +125,20 @@ fun OrderGUI(){
 
             Spacer(modifier = Modifier.weight(1f))
 
-            // Reset session button
+            // Exit program button
+
             Button(
                 onClick = {
                     OrderManager.clearAllOrders()
 
-                    val stateFile = File("data/state.json")
-                    if (stateFile.exists()) {
-                        stateFile.delete()
-                        println("Session reset")
-                    }
+                        println("Exit Program")
+
                 },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.error
                 )
             ) {
-                Text("Reset Session")
+                Text("Exit")
             }
 
             // Analytics button
@@ -374,7 +372,7 @@ fun chartDisplay(orders : List<Order>){
         Image(bitmap = profitChartImage!!, contentDescription = "Profit " +
                 "Stats", modifier = Modifier.fillMaxWidth().height(400.dp));
         Image(bitmap = quantityChartImage!!, contentDescription = "Profit " +
-                "Stats", modifier = Modifier.fillMaxWidth().height(400.dp));
+                "Stats", modifier = Modifier.fillMaxWidth().height(500.dp));
     }
 }
 
