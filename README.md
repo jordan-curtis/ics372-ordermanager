@@ -79,17 +79,3 @@ We welcome contributions. Suggested workflow:
 4. Open a pull request with a clear summary.
 
 Please follow the existing code style and keep commits focused and small.
-
-## License
-
-See the `LICENSE` file in the repository for license details. If no license is provided, contact the repository owner for permission to reuse the code.
-
-## Contact
-
-For questions or support, please open an issue in this repository or contact the repository owner.
-
----
-
-Project status: Active — maintained for instructional use.  
-Replace placeholders (screenshots, config examples) with real project data where appropriate.
-````
